@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/thursday"
+            android:textSize="35sp"
+            android:textColor="#E2FCE7" />
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:orientation="horizontal">
+            <TextView
+                android:text="@string/first_pair_called"
+                style="@style/CalledStyle" />
+            <TextView
+                style="@style/ClassStyle"
+                android:layout_width="wrap_content"
+                android:text="" />
+            <View style="@style/LineStyle"
+                android:id="@+id/bline_thursday_1"/>
+            <TextView
+                android:text="@string/second_pair_called"
+                style="@style/CalledStyle"/>
+            <TextView
+                style="@style/ClassStyle"
+                android:text="@string/thursday_2" />
+            <View style="@style/LineStyle"
+                android:id="@+id/bline_thursday_2"/>
+            <TextView
+                android:text="@string/third_pair_called"
+                style="@style/CalledStyle"/>
+            <TextView
+                style="@style/ClassStyle"
+                android:text="@string/thursday_3" />
+            <View style="@style/LineStyle"
+                android:id="@+id/bline_thursday_3"/>
+            <TextView
+                android:text="@string/fourth_pair_called"
+                style="@style/CalledStyle"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    style="@style/ClassStyle"
+                    android:text="@string/thursday_4_1" />
+                <View style="@style/LineStyleWeek"
+                    android:id="@+id/sline_thursday_1"/>
+                <TextView
+                    style="@style/ClassStyle"
+                    android:text="@string/thursday_4_2" />
+            </LinearLayout>
+            <View style="@style/LineStyle"
+                android:id="@+id/bline_thursday_4"/>
+            <TextView
+                android:text="@string/fifth_pair_called"
+                style="@style/CalledStyle"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    style="@style/ClassStyle"
+                    android:text="@string/thursday_5_1" />
+                <View style="@style/LineStyleWeek"
+                    android:id="@+id/sline_thursday_2"/>
+                <TextView
+                    style="@style/ClassStyle"
+                    android:text="@string/thursday_5_2" />
+            </LinearLayout>
+            <View style="@style/LineStyle"
+                android:id="@+id/bline_thursday_5"/>
+            <TextView
+                android:text="@string/sixth_pair_called"
+                style="@style/CalledStyle"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    style="@style/ClassStyle"
+                    android:text="@string/thursday_5_1" />
+                <View style="@style/LineStyleWeek"
+                    android:id="@+id/sline_thursday_3"/>
+                <TextView
+                    style="@style/ClassStyle"
+                    android:text="@string/thursday_5_2" />
+            </LinearLayout>
+            <View style="@style/LineStyle"
+                android:id="@+id/bline_thursday_6"/>
+        </GridLayout>
+    </LinearLayout>
+    <Button style="@style/BackButton"
+        android:id="@+id/button9"/>
+</RelativeLayout>
+</RelativeLayout>

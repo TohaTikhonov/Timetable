@@ -1,0 +1,101 @@
+<resources>
+    <string name="app_name">Расписание</string>
+    <string name="first_pair_called">1. 08:30–10:00</string>
+    <string name="second_pair_called">2. 10:10–11:40</string>
+    <string name="third_pair_called">3. 12:20–13:50</string>
+    <string name="fourth_pair_called">4. 14:00–15:30</string>
+    <string name="fifth_pair_called">5. 15:40–17:10</string>
+    <string name="sixth_pair_called">6. 17:20–18:50</string>
+    <string name="seventh_pair_called">7. 19:00–20:30</string>
+
+    <string name="monday">Понедельник</string>
+    <string name="tuesday">Вторник</string>
+    <string name="wednesday">Среда</string>
+    <string name="thursday">Четверг</string>
+    <string name="friday">Пятница</string>
+
+    <string name="image_description">triss</string>
+
+    <string name="monday_2">
+        (л/р) Теория автоматического \n
+        управления \n
+        Стародубцева, 1-309
+    </string>
+    <string name="monday_4">Физ-ра</string>
+
+    <string name="tuesday_4">
+        (лек) ТОЭ \n
+        Штенников, 1-324
+    </string>
+    <string name="tuesday_5">
+        (прак) ТОЭ \n
+        Штенников, 1-324
+    </string>
+    <string name="tuesday_6">
+        (лек) Микропроцессоры \n
+        Тюлькин, 1-324
+    </string>
+    <string name="tuesday_7">
+        (прак) Микропроцессоры \n
+        Тюлькин, 1-315А
+    </string>
+
+    <string name="wednesday_3">
+        (л/р) Электрические машины \n
+        Сибгатуллин, 1-318
+    </string>
+    <string name="wednesday_4">
+        (л/р) Электрические машины \n
+        Сибгатуллин, 1-318
+    </string>
+    <string name="wednesday_5">Физр-ра</string>
+    <string name="wednesday_6">
+        (л/р) Микропроцессоры \n
+        Тюлькин, 1-326А
+    </string>
+    <string name="wednesday_7">
+        (л/р) Микропроцессоры \n
+        Тюлькин, 1-326А
+    </string>
+
+    <string name="thursday_2">
+        (лек) Электрические машины \n
+        Стародубцева, 1-324
+    </string>
+    <string name="thursday_3">
+        (лек) ЭиЭА \n
+        Морозов, 1-324
+    </string>
+    <string name="thursday_4_1">
+        (лек) Силовая электроника \n
+        Морозов, 1-324
+    </string>
+    <string name="thursday_4_2">
+        (прак) Силовая электроника \n
+        Морозов, 1-324
+    </string>
+    <string name="thursday_5_1">
+        (л/р) Силовая электроника \n
+        Морозов, 1-5
+    </string>
+    <string name="thursday_5_2">
+        (л/р) ЭиЭА \n
+        Морозов, 1-5
+    </string>
+
+    <string name="friday_3">
+        (лек) Силовая электроника \n
+        Морозов, 1-324
+    </string>
+    <string name="friday_4">
+        (лек) Метрология \n
+        Штин, 1-315А
+    </string>
+    <string name="friday_5">
+        (л/р) Метрология \n
+        Штин, 1-326А
+    </string>
+    <string name="creators">
+        designed by Serega\ndeveloped by Antoha
+    </string>
+</resources>
