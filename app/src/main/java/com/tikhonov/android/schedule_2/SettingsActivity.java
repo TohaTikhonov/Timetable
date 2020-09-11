@@ -1,7 +1,7 @@
 package com.tikhonov.android.schedule_2;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.annotation.SuppressLint;
+import androidx.core.content.ContextCompat;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -19,6 +19,14 @@ public class SettingsActivity extends AppCompatActivity {
     private Cursor cursor;
     private Cursor cursorSelected;
     public ArrayList<ImageView> list = new ArrayList<>();
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        db.close();
+        cursor.close();
+        cursorSelected.close();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +50,16 @@ public class SettingsActivity extends AppCompatActivity {
         setMainImage(cursor.getString(0));
 
         int drawableId = this.getResources().getIdentifier(cursor.getString(1), "drawable", getPackageName());
-        @SuppressLint("UseCompatLoadingForDrawables") Drawable shapeDrawable = this.getResources().getDrawable(drawableId);
+        Drawable shapeDrawable = ContextCompat.getDrawable(getApplicationContext(), drawableId);
         Button button = (Button) findViewById(R.id.button_settings);
         button.setBackground(shapeDrawable);
         button.setTextColor(Color.parseColor(cursor.getString(2)));
 
         cursorSelected = db.query("SELECTED", new String[] {"SCREEN", "SELECTEDSCREEN", "SELECTED"}, null, null, null, null, null);
+        setSelectedScreenshots(cursorSelected);
+    }
+
+    public void setSelectedScreenshots(Cursor cursorSelected) {
         cursorSelected.moveToFirst();
         if(Integer.parseInt(cursorSelected.getString(2)) == 0) {
             setScreen("alina_theme", list.get(0));
@@ -80,14 +92,21 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
-    public void setMainImage(String path) { //Настраивает картинку понедельника
+    public void setMainImage(String path) {
         int drawableId = this.getResources().getIdentifier(path, "drawable", getPackageName());
         ImageView imageView = (ImageView) findViewById(R.id.image_settings);
         imageView.setImageResource(drawableId);
     }
-
     public void backDay(View view) {
         onBackPressed();
+    }
+
+    public void setButtonSettings(String path, String color) {
+        int drawableId = this.getResources().getIdentifier(path, "drawable", getPackageName());
+        Drawable shapeDrawable = ContextCompat.getDrawable(getApplicationContext(), drawableId);
+        Button button = (Button) findViewById(R.id.button_settings);
+        button.setBackground(shapeDrawable);
+        button.setTextColor(Color.parseColor(color));
     }
 
     public void updateAlina(View view) { //тема Alina
@@ -103,12 +122,7 @@ public class SettingsActivity extends AppCompatActivity {
         values.put("SMALLLINES", "#985E30");
 
         setMainImage("alina_black");
-
-        int drawableId = this.getResources().getIdentifier("rounded_alina", "drawable", getPackageName());
-        @SuppressLint("UseCompatLoadingForDrawables") Drawable shapeDrawable = this.getResources().getDrawable(drawableId);
-        Button button = (Button) findViewById(R.id.button_settings);
-        button.setBackground(shapeDrawable);
-        button.setTextColor(Color.parseColor("#D9C6BF"));
+        setButtonSettings("rounded_alina", "#D9C6BF");
 
         setScreen("alina_selected", list.get(0));
         setScreen("loli_theme", list.get(1));
@@ -160,11 +174,8 @@ public class SettingsActivity extends AppCompatActivity {
         values.put("SMALLLINES", "#DC8E9B");
         setMainImage("loli_black");
 
-        int drawableId = this.getResources().getIdentifier("rounded_loli", "drawable", getPackageName());
-        @SuppressLint("UseCompatLoadingForDrawables") Drawable shapeDrawable = this.getResources().getDrawable(drawableId);
-        Button button = (Button) findViewById(R.id.button_settings);
-        button.setBackground(shapeDrawable);
-        button.setTextColor(Color.parseColor("#FDDDD2"));
+        setMainImage("loli_black");
+        setButtonSettings("rounded_loli", "#FDDDD2");
 
         setScreen("alina_theme", list.get(0));
         setScreen("loli_selected", list.get(1));
@@ -210,11 +221,7 @@ public class SettingsActivity extends AppCompatActivity {
         values.put("BIGLINES", "#EBD8EC");
         values.put("SMALLLINES", "#EBD8EC");
 
-        int drawableId = this.getResources().getIdentifier("rounded_storm", "drawable", getPackageName());
-        @SuppressLint("UseCompatLoadingForDrawables") Drawable shapeDrawable = this.getResources().getDrawable(drawableId);
-        Button button = (Button) findViewById(R.id.button_settings);
-        button.setBackground(shapeDrawable);
-        button.setTextColor(Color.parseColor("#000000"));
+        setButtonSettings("rounded_storm", "#000000");
         setMainImage("storm_black");
 
         setScreen("alina_theme", list.get(0));
@@ -261,11 +268,7 @@ public class SettingsActivity extends AppCompatActivity {
         values.put("BIGLINES", "#5E7984");
         values.put("SMALLLINES", "#9FB2B9");
 
-        int drawableId = this.getResources().getIdentifier("rounded_iamgey", "drawable", getPackageName());
-        @SuppressLint("UseCompatLoadingForDrawables") Drawable shapeDrawable = this.getResources().getDrawable(drawableId);
-        Button button = (Button) findViewById(R.id.button_settings);
-        button.setBackground(shapeDrawable);
-        button.setTextColor(Color.parseColor("#C4E5EC"));
+        setButtonSettings("rounded_iamgey", "#C4E5EC");
         setMainImage("noct_black");
 
         setScreen("alina_theme", list.get(0));
@@ -312,11 +315,7 @@ public class SettingsActivity extends AppCompatActivity {
         values.put("BIGLINES", "#f7971c");
         values.put("SMALLLINES", "#9E733C");
 
-        int drawableId = this.getResources().getIdentifier("rounded_pornhub", "drawable", getPackageName());
-        @SuppressLint("UseCompatLoadingForDrawables") Drawable shapeDrawable = this.getResources().getDrawable(drawableId);
-        Button button = (Button) findViewById(R.id.button_settings);
-        button.setBackground(shapeDrawable);
-        button.setTextColor(Color.parseColor("#ffffff"));
+        setButtonSettings("rounded_pornhub", "#ffffff");
         setMainImage("sasha_black");
 
         int pathImage1 = this.getResources().getIdentifier("sasha_selected", "drawable", getPackageName());

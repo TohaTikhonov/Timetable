@@ -1,6 +1,5 @@
 package com.tikhonov.android.schedule_2;
 
-import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -11,57 +10,53 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Fragment4 extends Fragment {
-    private SQLiteDatabase db;
-    private Cursor cursor;
+    private Button mButton;
 
     public Fragment4() {
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_thursday, container, false);
-        return view;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_thursday, container, false);
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        mButton = (Button) Objects.requireNonNull(getView()).findViewById(R.id.button9);
         SQLiteOpenHelper raspisanieDatabaseHelper = new RaspisanieDatabaseHelper(getContext());
-        db = raspisanieDatabaseHelper.getReadableDatabase();
-        cursor = db.query("THEME", new String[]{"BUTTONBACK", "IMAGEBLACK", "BUTTONTEXT", "BIGLINES", "SMALLLINES"}, null, null, null, null, null);
+        SQLiteDatabase db = raspisanieDatabaseHelper.getReadableDatabase();
+        Cursor cursor = db.query("THEME", new String[]{"BUTTONBACK", "BUTTONTEXT", "BIGLINES", "SMALLLINES"}, null, null, null, null, null);
         cursor.moveToFirst();
 
         setButtonBack(cursor.getString(0));
-        setButtonsText(cursor.getString(2));
-        setBLines(cursor.getString(3));
-        setSLines(cursor.getString(4));
+        setButtonsText(cursor.getString(1));
+        setBLines(cursor.getString(2));
+        setSLines(cursor.getString(3));
+        db.close();
+        cursor.close();
     }
 
     public void setButtonBack(String path) {
-        int drawableId = this.getResources().getIdentifier(path, "drawable", getActivity().getPackageName());
-        @SuppressLint("UseCompatLoadingForDrawables") Drawable shapeDrawable = this.getResources().getDrawable(drawableId);
-        Button button = (Button) getView().findViewById(R.id.button9);
-        button.setBackground(shapeDrawable);
+        int drawableId = this.getResources().getIdentifier(path, "drawable", Objects.requireNonNull(getActivity()).getPackageName());
+        Drawable shapeDrawable = ContextCompat.getDrawable(getActivity().getApplicationContext(), drawableId);
+        mButton.setBackground(shapeDrawable);
     }
 
     public void setButtonsText(String path) {
-        Button button = (Button) getView().findViewById(R.id.button9);
-        button.setTextColor(Color.parseColor(path));
+        mButton.setTextColor(Color.parseColor(path));
     }
 
     public void setBLines(String path) {
         ArrayList<View> list = new ArrayList<>();
-        list.add(getView().findViewById(R.id.bline_thursday_1));
+        list.add(Objects.requireNonNull(getView()).findViewById(R.id.bline_thursday_1));
         list.add(getView().findViewById(R.id.bline_thursday_2));
         list.add(getView().findViewById(R.id.bline_thursday_3));
         list.add(getView().findViewById(R.id.bline_thursday_4));
@@ -73,7 +68,7 @@ public class Fragment4 extends Fragment {
     }
     public void setSLines(String path) {
         ArrayList<View> list = new ArrayList<>();
-        list.add(getView().findViewById(R.id.sline_thursday_1));
+        list.add(Objects.requireNonNull(getView()).findViewById(R.id.sline_thursday_1));
         list.add(getView().findViewById(R.id.sline_thursday_2));
         list.add(getView().findViewById(R.id.sline_thursday_3));
         for(View v : list) {

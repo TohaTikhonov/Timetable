@@ -6,6 +6,7 @@
     tools:context=".MainActivity">
     <ImageView
         android:id="@+id/image_main"
+        android:contentDescription="@string/image_description"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
@@ -20,30 +21,30 @@
             android:text="@string/monday"
             style="@style/NotCapsButton"
             android:id="@+id/button1"
-            android:onClick="toThursday"
+            android:onClick="toParticularDay"
             android:layout_marginTop="30dp" />
         <Button
             android:text="@string/tuesday"
             style="@style/NotCapsButton"
             android:id="@+id/button2"
-            android:onClick="toThursday"
+            android:onClick="toParticularDay"
             android:layout_marginTop="17dp" />
         <Button
             android:text="@string/wednesday"
             style="@style/NotCapsButton"
-            android:onClick="toThursday"
+            android:onClick="toParticularDay"
             android:id="@+id/button3"
             android:layout_marginTop="17dp" />
         <Button
             android:text="@string/thursday"
             style="@style/NotCapsButton"
-            android:onClick="toThursday"
+            android:onClick="toParticularDay"
             android:id="@+id/button4"
             android:layout_marginTop="17dp" />
         <Button
             android:text="@string/friday"
             style="@style/NotCapsButton"
-            android:onClick="toThursday"
+            android:onClick="toParticularDay"
             android:id="@+id/button5"
             android:layout_marginTop="17dp"/>
     </LinearLayout>

@@ -6,18 +6,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
-import java.util.Set;
+import java.util.Objects;
 
 public class DayActivity extends AppCompatActivity {
     private SQLiteDatabase db;
@@ -30,11 +27,17 @@ public class DayActivity extends AppCompatActivity {
         db = raspisanieDatabaseHelper.getReadableDatabase();
         cursor = db.query("THEME", new String[]{"IMAGEBLACK"}, null, null, null, null, null);
         cursor.moveToFirst();
-
         setMainImage(cursor.getString(0));
     }
 
-    public void setMainImage(String path) { //Настраивает картинку понедельника
+    @Override
+    protected void onPause() {
+        super.onPause();
+        cursor.close();
+        db.close();
+    }
+
+    public void setMainImage(String path) {
         int drawableId = this.getResources().getIdentifier(path, "drawable", getPackageName());
         ImageView imageView = (ImageView) findViewById(R.id.image_day);
         imageView.setImageResource(drawableId);
@@ -56,7 +59,8 @@ public class DayActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int currentItem = 0;
-        String day = intent.getExtras().getString("day");
+        String day = Objects.requireNonNull(intent.getExtras()).getString("nameDay");
+        assert day != null;
         switch (day) {
             case "Понедельник":
                 currentItem = 0;
