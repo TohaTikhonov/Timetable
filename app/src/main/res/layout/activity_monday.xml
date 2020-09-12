@@ -75,15 +75,6 @@
                     android:id="@+id/bline_monday_4"/>
             </GridLayout>
         </LinearLayout>
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
-            android:onClick="toSettings"
-            android:contentDescription="@string/image_settings"
-            android:layout_alignParentBottom="true"
-            android:src="@drawable/settings"/>
         <Button style="@style/BackButton"
             android:id="@+id/button6" />
     </RelativeLayout>

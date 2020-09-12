@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/saturday"
+                android:textSize="35sp"
+                android:textColor="#E2FCE7" />
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:orientation="horizontal">
+                <TextView
+                    android:text="@string/first_pair_called"
+                    style="@style/CalledStyle" />
+                <TextView
+                    style="@style/ClassStyle"
+                    android:text="@string/satarday_1" />
+                <View style="@style/LineStyle"
+                    android:id="@+id/bline_satarday_1"/>
+                <TextView
+                    android:text="@string/second_pair_called"
+                    style="@style/CalledStyle"/>
+                <TextView
+                    style="@style/ClassStyle"
+                    android:text="@string/satarday_2" />
+                <View style="@style/LineStyle"
+                    android:id="@+id/bline_satarday_2"/>
+
+            </GridLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true">
+            <Button style="@style/BackButton"
+                android:id="@+id/button11"/>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

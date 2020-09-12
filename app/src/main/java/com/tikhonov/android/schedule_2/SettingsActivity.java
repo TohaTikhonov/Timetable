@@ -116,7 +116,7 @@ public class SettingsActivity extends AppCompatActivity {
         ContentValues values = new ContentValues();
         values.put("IMAGE", "alina");
         values.put("BUTTONBACK", "rounded_alina");
-        values.put("BUTTONTEXT", "#D9C6BF");
+        values.put("BUTTONTEXT", "#ffffff");
         values.put("IMAGEBLACK", "alina_black");
         values.put("BIGLINES", "#C88548");
         values.put("SMALLLINES", "#985E30");
@@ -310,7 +310,7 @@ public class SettingsActivity extends AppCompatActivity {
         ContentValues values = new ContentValues();
         values.put("IMAGE", "sasha");
         values.put("BUTTONBACK", "rounded_pornhub");
-        values.put("BUTTONTEXT", "#ffffff");
+        values.put("BUTTONTEXT", "#000000");
         values.put("IMAGEBLACK", "sasha_black");
         values.put("BIGLINES", "#f7971c");
         values.put("SMALLLINES", "#9E733C");

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.database.Cursor;
@@ -13,7 +14,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-
 import java.util.Objects;
 
 public class DayActivity extends AppCompatActivity {
@@ -47,11 +47,6 @@ public class DayActivity extends AppCompatActivity {
         onBackPressed();
     }
 
-    public void toSettings(View view) {
-            Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,20 +57,23 @@ public class DayActivity extends AppCompatActivity {
         String day = Objects.requireNonNull(intent.getExtras()).getString("nameDay");
         assert day != null;
         switch (day) {
-            case "Понедельник":
-                currentItem = 0;
+            case "1":
+                currentItem = 1002;
                 break;
-            case "Вторник":
-                currentItem = 1;
+            case "2":
+                currentItem = 1003;
                 break;
-            case "Среда":
-                currentItem = 2;
+            case "3":
+                currentItem = 1004;
                 break;
-            case "Четверг":
-                currentItem = 3;
+            case "4":
+                currentItem = 1005;
                 break;
-            case "Пятница":
-                currentItem = 4;
+            case "5":
+                currentItem = 1006;
+                break;
+            case "6":
+                currentItem = 1007;
                 break;
         }
 
@@ -85,19 +83,20 @@ public class DayActivity extends AppCompatActivity {
         viewPager.setCurrentItem(currentItem);
     }
 
-    public static class MyAdapter extends FragmentPagerAdapter {
+    public static class MyAdapter extends FragmentStatePagerAdapter {
         MyAdapter(FragmentManager fm) {
             super(fm);
         }
 
         @Override
         public int getCount() {
-            return 5;
+            return Integer.MAX_VALUE;
         }
 
         @NonNull
         @Override
         public Fragment getItem(int position) {
+            position = position % 6;
             switch (position) {
                 case 0:
                     return new Fragment1();
@@ -109,6 +108,8 @@ public class DayActivity extends AppCompatActivity {
                     return new Fragment4();
                 case 4:
                     return new Fragment5();
+                case 5:
+                    return new Fragment6();
                 default:
                     return new Fragment1();
             }

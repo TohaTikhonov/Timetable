@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.core.content.ContextCompat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends Activity {
     private SQLiteDatabase db;
@@ -25,10 +27,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        buttons.add((Button) findViewById(R.id.button1));
-        buttons.add((Button) findViewById(R.id.button2));
-        buttons.add((Button) findViewById(R.id.button3));
         buttons.add((Button) findViewById(R.id.button4));
         buttons.add((Button) findViewById(R.id.button5));
     }
@@ -57,11 +55,37 @@ public class MainActivity extends Activity {
         db.close();
     }
 
-    public void toParticularDay(View view) {
+    public void toToday(View view) {
+        Date date = new Date();
+        int numberDay = date.getDay();
+        if (numberDay == 0) {
+            numberDay = 1;
+            Toast.makeText(this, "Сегодня воскресенье, поэтому вот тебе понедельник", Toast.LENGTH_SHORT).show();
+        }
         Intent intent = new Intent(this, DayActivity.class);
-        Button button = (Button) view;
-        String day = button.getText().toString();
-        intent.putExtra("nameDay", day);
+        intent.putExtra("nameDay", String.valueOf(numberDay));
+        startActivity(intent);
+    }
+
+    public void toTomorrow(View view) {
+        Date date = new Date();
+        int numberDay = date.getDay() + 1;
+        if (numberDay == 7) {
+            numberDay = 1;
+            Toast.makeText(this, "Завтра воскресенье, поэтому вот тебе понедельник", Toast.LENGTH_SHORT).show();
+        }
+        Intent intent = new Intent(this, DayActivity.class);
+        intent.putExtra("nameDay", String.valueOf(numberDay));
+        startActivity(intent);
+    }
+
+    public void toSettings(View view) {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
+    public void toMap(View view) {
+        Intent intent = new Intent(this, MapActivity.class);
         startActivity(intent);
     }
 
