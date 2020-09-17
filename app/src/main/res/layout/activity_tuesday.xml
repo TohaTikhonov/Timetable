@@ -67,7 +67,5 @@
                 android:id="@+id/bline_tuesday_5"/>
         </GridLayout>
     </LinearLayout>
-    <Button style="@style/BackButton"
-        android:id="@+id/button7"/>
 </RelativeLayout>
 </RelativeLayout>

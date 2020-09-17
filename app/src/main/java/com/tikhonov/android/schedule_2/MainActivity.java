@@ -13,7 +13,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import androidx.core.content.ContextCompat;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -91,20 +93,20 @@ public class MainActivity extends Activity {
 
     public void setMainImage(String path) {
         int drawableId = this.getResources().getIdentifier(path, "drawable", getPackageName());
-        ImageView  imageView = (ImageView) findViewById(R.id.image_main);
+        ImageView imageView = (ImageView) findViewById(R.id.image_main);
         imageView.setImageResource(drawableId);
     }
 
     public void setButtonsColor(String path) {
         int drawableId = this.getResources().getIdentifier(path, "drawable", getPackageName());
         Drawable shapeDrawable = ContextCompat.getDrawable(getApplicationContext(), drawableId);
-        for(Button b : buttons) {
+        for (Button b : buttons) {
             b.setBackground(shapeDrawable);
         }
     }
 
     public void setButtonsText(String path) {
-        for(Button b : buttons) {
+        for (Button b : buttons) {
             b.setTextColor(Color.parseColor(path));
         }
     }

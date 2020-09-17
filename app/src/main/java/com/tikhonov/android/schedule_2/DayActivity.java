@@ -2,6 +2,7 @@ package com.tikhonov.android.schedule_2;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -11,23 +12,39 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import java.util.Objects;
 
 public class DayActivity extends AppCompatActivity {
     private SQLiteDatabase db;
     private Cursor cursor;
+    Button button;
 
     @Override
     public void onResume() {
         super.onResume();
         SQLiteOpenHelper raspisanieDatabaseHelper = new RaspisanieDatabaseHelper(this);
         db = raspisanieDatabaseHelper.getReadableDatabase();
-        cursor = db.query("THEME", new String[]{"IMAGEBLACK"}, null, null, null, null, null);
+        cursor = db.query("THEME", new String[]{"IMAGEBLACK", "BUTTONBACK", "BUTTONTEXT"}, null, null, null, null, null);
         cursor.moveToFirst();
         setMainImage(cursor.getString(0));
+        setButtonsColor(cursor.getString(1));
+        setButtonsText(cursor.getString(2));
+    }
+
+    public void setButtonsColor(String path) {
+        int drawableId = this.getResources().getIdentifier(path, "drawable", getPackageName());
+        Drawable shapeDrawable = ContextCompat.getDrawable(getApplicationContext(), drawableId);
+        button.setBackground(shapeDrawable);
+    }
+
+    public void setButtonsText(String path) {
+        button.setTextColor(Color.parseColor(path));
     }
 
     @Override
@@ -51,6 +68,8 @@ public class DayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day);
+
+        button = findViewById(R.id.button6);
 
         Intent intent = getIntent();
         int currentItem = 0;

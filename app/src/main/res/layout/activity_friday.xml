@@ -99,8 +99,6 @@
         android:orientation="horizontal"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true">
-        <Button style="@style/BackButton"
-            android:id="@+id/button10"/>
     </LinearLayout>
 </RelativeLayout>
 </RelativeLayout>

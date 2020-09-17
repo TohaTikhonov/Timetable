@@ -303,7 +303,7 @@ public class SettingsActivity extends AppCompatActivity {
         db.update("SELECTED", selectedValues, "_id=?", new String[]{"5"});
     }
 
-    public void updatePornhub(View view) { // тема Iamgey
+    public void updatePornhub(View view) { // тема Pornhub
         SQLiteOpenHelper raspisanieDatabaseHelper = new RaspisanieDatabaseHelper(this);
         db = raspisanieDatabaseHelper.getWritableDatabase();
 
@@ -352,5 +352,56 @@ public class SettingsActivity extends AppCompatActivity {
         cursorSelected.moveToNext();
         selectedValues.put("SELECTED", 1);
         db.update("SELECTED", selectedValues, "_id=?", new String[]{"5"});
+    }
+
+    public void updateSatanism(View view) { // тема Satanism
+        SQLiteOpenHelper raspisanieDatabaseHelper = new RaspisanieDatabaseHelper(this);
+        db = raspisanieDatabaseHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("IMAGE", "satanism");
+        values.put("BUTTONBACK", "rounded_pornhub");
+        values.put("BUTTONTEXT", "#BAB8AA");
+        values.put("IMAGEBLACK", "satanism_black");
+        values.put("BIGLINES", "#5D0C10");
+        values.put("SMALLLINES", "#5D0C10");
+
+        setButtonSettings("rounded_satanism", "#ffffff");
+        setMainImage("satanism_black");
+
+//        int pathImage1 = this.getResources().getIdentifier("sasha_selected", "drawable", getPackageName());
+//        ImageView image = (ImageView) findViewById(R.id.theme5);
+//        image.setImageResource(pathImage1);
+
+//        setScreen("alina_theme", list.get(0));
+//        setScreen("loli_theme", list.get(1));
+//        setScreen("storm_theme", list.get(2));
+//        setScreen("noct_theme", list.get(3));
+//        setScreen("sasha_selected", list.get(4));
+
+//        db.update("THEME", values, "_id=?", new String[]{"1"});
+//
+//        cursorSelected = db.query("SELECTED", new String[] {"SELECTED"}, null, null, null, null, null);
+//
+//        cursorSelected.moveToFirst();
+//        ContentValues selectedValues = new ContentValues();
+//        selectedValues.put("SELECTED", 0);
+//        db.update("SELECTED", selectedValues, "_id=?", new String[]{"1"});
+//
+//        cursorSelected.moveToNext();
+//        selectedValues.put("SELECTED", 0);
+//        db.update("SELECTED", selectedValues, "_id=?", new String[]{"2"});
+//
+//        cursorSelected.moveToNext();
+//        selectedValues.put("SELECTED", 0);
+//        db.update("SELECTED", selectedValues, "_id=?", new String[]{"3"});
+//
+//        cursorSelected.moveToNext();
+//        selectedValues.put("SELECTED", 0);
+//        db.update("SELECTED", selectedValues, "_id=?", new String[]{"4"});
+//
+//        cursorSelected.moveToNext();
+//        selectedValues.put("SELECTED", 1);
+//        db.update("SELECTED", selectedValues, "_id=?", new String[]{"5"});
     }
 }

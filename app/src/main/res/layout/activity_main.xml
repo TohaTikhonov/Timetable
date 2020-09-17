@@ -4,50 +4,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <ImageView
         android:id="@+id/image_main"
-        android:contentDescription="@string/image_description"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:contentDescription="@string/image_description"
         android:scaleType="centerCrop"
         android:src="@drawable/storm" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="70dp">
+        android:layout_marginBottom="70dp"
+        android:orientation="vertical">
+
         <Button
-            android:text="Сегодня"
-            android:elevation="30dp"
-            style="@style/NotCapsButton"
-            android:onClick="toToday"
             android:id="@+id/button4"
-            android:layout_marginTop="17dp" />
-        <Button
-            android:text="Завтра"
             style="@style/NotCapsButton"
-            android:onClick="toTomorrow"
+            android:layout_marginTop="17dp"
+            android:elevation="30dp"
+            android:onClick="toToday"
+            android:text="Сегодня" />
+
+        <Button
             android:id="@+id/button5"
-            android:layout_marginTop="17dp"/>
+            style="@style/NotCapsButton"
+            android:layout_marginTop="17dp"
+            android:onClick="toTomorrow"
+            android:text="Завтра" />
     </LinearLayout>
+
     <ImageView
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
-        android:onClick="toSettings"
         android:contentDescription="@string/image_settings"
-        android:layout_alignParentBottom="true"
-        android:src="@drawable/settings"/>
+        android:onClick="toSettings"
+        android:src="@drawable/settings" />
+
     <ImageView
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:onClick="toMap"
         android:contentDescription="@string/image_settings"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:src="@drawable/map"/>
+        android:onClick="toMap"
+        android:src="@drawable/map" />
 </RelativeLayout>
