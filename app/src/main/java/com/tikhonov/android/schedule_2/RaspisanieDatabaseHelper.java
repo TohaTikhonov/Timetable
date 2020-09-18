@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class RaspisanieDatabaseHelper extends SQLiteOpenHelper {
-    private static final String DB_NAME = "db";
+    private static final String DB_NAME = "dddb";
     private static final int DB_VERSION = 2;
 
     public RaspisanieDatabaseHelper(Context context){
@@ -42,6 +42,7 @@ public class RaspisanieDatabaseHelper extends SQLiteOpenHelper {
         putScreens(sqLiteDatabase, "storm_theme", "storm_selected", 1);
         putScreens(sqLiteDatabase, "noct_theme", "noct_selected", 0);
         putScreens(sqLiteDatabase, "sasha_theme", "sasha_selected", 0);
+        putScreens(sqLiteDatabase, "satanism_theme", "satanism_selected", 0);
     }
 
     public void putScreens(SQLiteDatabase sqLiteDatabase, String screen, String selectedScreen, int selected) {

@@ -38,6 +38,7 @@ public class SettingsActivity extends AppCompatActivity {
         list.add((ImageView) findViewById(R.id.theme3));
         list.add((ImageView) findViewById(R.id.theme4));
         list.add((ImageView) findViewById(R.id.theme5));
+        list.add((ImageView) findViewById(R.id.theme6));
     }
 
     @Override
@@ -90,6 +91,12 @@ public class SettingsActivity extends AppCompatActivity {
         } else {
             setScreen("sasha_selected", list.get(4));
         }
+        cursorSelected.moveToNext();
+        if(Integer.parseInt(cursorSelected.getString(2)) == 0) {
+            setScreen("satanism_theme", list.get(5));
+        } else {
+            setScreen("satanism_selected", list.get(5));
+        }
     }
 
     public void setMainImage(String path) {
@@ -129,6 +136,7 @@ public class SettingsActivity extends AppCompatActivity {
         setScreen("storm_theme", list.get(2));
         setScreen("noct_theme", list.get(3));
         setScreen("sasha_theme", list.get(4));
+        setScreen("satanism_theme", list.get(5));
 
         db.update("THEME", values, "_id=?", new String[]{"1"});
 
@@ -154,6 +162,10 @@ public class SettingsActivity extends AppCompatActivity {
         cursorSelected.moveToNext();
         selectedValues.put("SELECTED", 0);
         db.update("SELECTED", selectedValues, "_id=?", new String[]{"5"});
+
+        cursorSelected.moveToNext();
+        selectedValues.put("SELECTED", 0);
+        db.update("SELECTED", selectedValues, "_id=?", new String[]{"6"});
     }
 
     public void setScreen(String name, ImageView iv) {
@@ -182,6 +194,7 @@ public class SettingsActivity extends AppCompatActivity {
         setScreen("storm_theme", list.get(2));
         setScreen("noct_theme", list.get(3));
         setScreen("sasha_theme", list.get(4));
+        setScreen("satanism_theme", list.get(5));
 
         db.update("THEME", values, "_id=?", new String[]{"1"});
 
@@ -207,6 +220,10 @@ public class SettingsActivity extends AppCompatActivity {
         cursorSelected.moveToNext();
         selectedValues.put("SELECTED", 0);
         db.update("SELECTED", selectedValues, "_id=?", new String[]{"5"});
+
+        cursorSelected.moveToNext();
+        selectedValues.put("SELECTED", 0);
+        db.update("SELECTED", selectedValues, "_id=?", new String[]{"6"});
     }
 
     public void updateElectricity(View view) { // тема Electricity
@@ -229,6 +246,7 @@ public class SettingsActivity extends AppCompatActivity {
         setScreen("storm_selected", list.get(2));
         setScreen("noct_theme", list.get(3));
         setScreen("sasha_theme", list.get(4));
+        setScreen("satanism_theme", list.get(5));
 
         db.update("THEME", values, "_id=?", new String[]{"1"});
 
@@ -254,6 +272,10 @@ public class SettingsActivity extends AppCompatActivity {
         cursorSelected.moveToNext();
         selectedValues.put("SELECTED", 0);
         db.update("SELECTED", selectedValues, "_id=?", new String[]{"5"});
+
+        cursorSelected.moveToNext();
+        selectedValues.put("SELECTED", 0);
+        db.update("SELECTED", selectedValues, "_id=?", new String[]{"6"});
     }
 
     public void updateIamgey(View view) { // тема Iamgey
@@ -276,6 +298,7 @@ public class SettingsActivity extends AppCompatActivity {
         setScreen("storm_theme", list.get(2));
         setScreen("noct_selected", list.get(3));
         setScreen("sasha_theme", list.get(4));
+        setScreen("satanism_theme", list.get(5));
 
         db.update("THEME", values, "_id=?", new String[]{"1"});
 
@@ -301,6 +324,10 @@ public class SettingsActivity extends AppCompatActivity {
         cursorSelected.moveToNext();
         selectedValues.put("SELECTED", 0);
         db.update("SELECTED", selectedValues, "_id=?", new String[]{"5"});
+
+        cursorSelected.moveToNext();
+        selectedValues.put("SELECTED", 0);
+        db.update("SELECTED", selectedValues, "_id=?", new String[]{"6"});
     }
 
     public void updatePornhub(View view) { // тема Pornhub
@@ -327,6 +354,7 @@ public class SettingsActivity extends AppCompatActivity {
         setScreen("storm_theme", list.get(2));
         setScreen("noct_theme", list.get(3));
         setScreen("sasha_selected", list.get(4));
+        setScreen("satanism_theme", list.get(5));
 
         db.update("THEME", values, "_id=?", new String[]{"1"});
 
@@ -352,6 +380,10 @@ public class SettingsActivity extends AppCompatActivity {
         cursorSelected.moveToNext();
         selectedValues.put("SELECTED", 1);
         db.update("SELECTED", selectedValues, "_id=?", new String[]{"5"});
+
+        cursorSelected.moveToNext();
+        selectedValues.put("SELECTED", 0);
+        db.update("SELECTED", selectedValues, "_id=?", new String[]{"6"});
     }
 
     public void updateSatanism(View view) { // тема Satanism
@@ -360,7 +392,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         ContentValues values = new ContentValues();
         values.put("IMAGE", "satanism");
-        values.put("BUTTONBACK", "rounded_pornhub");
+        values.put("BUTTONBACK", "rounded_satanism");
         values.put("BUTTONTEXT", "#BAB8AA");
         values.put("IMAGEBLACK", "satanism_black");
         values.put("BIGLINES", "#5D0C10");
@@ -369,39 +401,44 @@ public class SettingsActivity extends AppCompatActivity {
         setButtonSettings("rounded_satanism", "#ffffff");
         setMainImage("satanism_black");
 
-//        int pathImage1 = this.getResources().getIdentifier("sasha_selected", "drawable", getPackageName());
-//        ImageView image = (ImageView) findViewById(R.id.theme5);
-//        image.setImageResource(pathImage1);
+        int pathImage1 = this.getResources().getIdentifier("sasha_satanism", "drawable", getPackageName());
+        ImageView image = (ImageView) findViewById(R.id.theme5);
+        image.setImageResource(pathImage1);
 
-//        setScreen("alina_theme", list.get(0));
-//        setScreen("loli_theme", list.get(1));
-//        setScreen("storm_theme", list.get(2));
-//        setScreen("noct_theme", list.get(3));
-//        setScreen("sasha_selected", list.get(4));
+        setScreen("alina_theme", list.get(0));
+        setScreen("loli_theme", list.get(1));
+        setScreen("storm_theme", list.get(2));
+        setScreen("noct_theme", list.get(3));
+        setScreen("sasha_theme", list.get(4));
+        setScreen("satanism_selected", list.get(5));
 
-//        db.update("THEME", values, "_id=?", new String[]{"1"});
-//
-//        cursorSelected = db.query("SELECTED", new String[] {"SELECTED"}, null, null, null, null, null);
-//
-//        cursorSelected.moveToFirst();
-//        ContentValues selectedValues = new ContentValues();
-//        selectedValues.put("SELECTED", 0);
-//        db.update("SELECTED", selectedValues, "_id=?", new String[]{"1"});
-//
-//        cursorSelected.moveToNext();
-//        selectedValues.put("SELECTED", 0);
-//        db.update("SELECTED", selectedValues, "_id=?", new String[]{"2"});
-//
-//        cursorSelected.moveToNext();
-//        selectedValues.put("SELECTED", 0);
-//        db.update("SELECTED", selectedValues, "_id=?", new String[]{"3"});
-//
-//        cursorSelected.moveToNext();
-//        selectedValues.put("SELECTED", 0);
-//        db.update("SELECTED", selectedValues, "_id=?", new String[]{"4"});
-//
-//        cursorSelected.moveToNext();
-//        selectedValues.put("SELECTED", 1);
-//        db.update("SELECTED", selectedValues, "_id=?", new String[]{"5"});
+        db.update("THEME", values, "_id=?", new String[]{"1"});
+
+        cursorSelected = db.query("SELECTED", new String[] {"SELECTED"}, null, null, null, null, null);
+
+        cursorSelected.moveToFirst();
+        ContentValues selectedValues = new ContentValues();
+        selectedValues.put("SELECTED", 0);
+        db.update("SELECTED", selectedValues, "_id=?", new String[]{"1"});
+
+        cursorSelected.moveToNext();
+        selectedValues.put("SELECTED", 0);
+        db.update("SELECTED", selectedValues, "_id=?", new String[]{"2"});
+
+        cursorSelected.moveToNext();
+        selectedValues.put("SELECTED", 0);
+        db.update("SELECTED", selectedValues, "_id=?", new String[]{"3"});
+
+        cursorSelected.moveToNext();
+        selectedValues.put("SELECTED", 0);
+        db.update("SELECTED", selectedValues, "_id=?", new String[]{"4"});
+
+        cursorSelected.moveToNext();
+        selectedValues.put("SELECTED", 0);
+        db.update("SELECTED", selectedValues, "_id=?", new String[]{"5"});
+
+        cursorSelected.moveToNext();
+        selectedValues.put("SELECTED", 1);
+        db.update("SELECTED", selectedValues, "_id=?", new String[]{"6"});
     }
 }

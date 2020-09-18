@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Расписание</string>
+    <string name="change_theme">Выбор темы</string>
 
 
     <string name="first_pair_called">1. 08:30–10:00</string>
@@ -9,6 +10,13 @@
     <string name="fifth_pair_called">5. 15:40–17:10</string>
     <string name="sixth_pair_called">6. 17:20–18:50</string>
     <string name="seventh_pair_called">7. 19:00–20:30</string>
+
+    <string name="theme_alina">Alina</string>
+    <string name="theme_loli">Loli</string>
+    <string name="theme_storm">Electricity</string>
+    <string name="theme_noct">Iamgay</string>
+    <string name="theme_sasha">Pornhub</string>
+    <string name="theme_satanism">Satanism</string>
 
     <string name="monday">Понедельник</string>
     <string name="tuesday">Вторник</string>
@@ -110,6 +118,4 @@
     <string name="creators">
         designed by Serega\ndeveloped by Antoha
     </string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
