@@ -13,15 +13,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import androidx.core.content.ContextCompat;
-
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class MainActivity extends Activity {
-    private SQLiteDatabase db;
+    public static SQLiteDatabase db;
     private Cursor cursor;
     public ArrayList<Button> buttons = new ArrayList<>();
 
@@ -29,17 +27,17 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        buttons.add((Button) findViewById(R.id.button4));
-        buttons.add((Button) findViewById(R.id.button5));
+        buttons.add((Button) findViewById(R.id.button1));
+        buttons.add((Button) findViewById(R.id.button2));
+        SQLiteOpenHelper timetableDatabaseHelper = new TimetableDatabaseHelper(this);
+        db = timetableDatabaseHelper.getWritableDatabase();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         try {
-            SQLiteOpenHelper timetableDatabaseHelper = new RaspisanieDatabaseHelper(this);
-            db = timetableDatabaseHelper.getReadableDatabase();
-            cursor = db.query("THEME", new String[]{"IMAGE", "BUTTONBACK", "BUTTONTEXT"}, null, null, null, null, null);
+            cursor = db.query("THEME", new String[]{"IMAGE", "BUTTONBACK", "BUTTONTEXT"}, "ISSELECTED = ?", new String[] {"1"}, null, null, null);
             cursor.moveToFirst();
 
             setMainImage(cursor.getString(0));
@@ -54,12 +52,11 @@ public class MainActivity extends Activity {
     protected void onPause() {
         super.onPause();
         cursor.close();
-        db.close();
     }
 
     public void toToday(View view) {
-        Date date = new Date();
-        int numberDay = date.getDay();
+        Calendar calendar = new GregorianCalendar();
+        int numberDay = calendar.get(Calendar.DAY_OF_WEEK);
         if (numberDay == 0) {
             numberDay = 1;
             Toast.makeText(this, "Сегодня воскресенье, поэтому вот тебе понедельник", Toast.LENGTH_SHORT).show();
@@ -70,8 +67,8 @@ public class MainActivity extends Activity {
     }
 
     public void toTomorrow(View view) {
-        Date date = new Date();
-        int numberDay = date.getDay() + 1;
+        Calendar calendar = new GregorianCalendar();
+        int numberDay = calendar.get(Calendar.DAY_OF_WEEK);
         if (numberDay == 7) {
             numberDay = 1;
             Toast.makeText(this, "Завтра воскресенье, поэтому вот тебе понедельник", Toast.LENGTH_SHORT).show();

@@ -5,13 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -21,16 +18,13 @@ import android.widget.ImageView;
 import java.util.Objects;
 
 public class DayActivity extends AppCompatActivity {
-    private SQLiteDatabase db;
     private Cursor cursor;
     Button button;
 
     @Override
     public void onResume() {
         super.onResume();
-        SQLiteOpenHelper raspisanieDatabaseHelper = new RaspisanieDatabaseHelper(this);
-        db = raspisanieDatabaseHelper.getReadableDatabase();
-        cursor = db.query("THEME", new String[]{"IMAGEBLACK", "BUTTONBACK", "BUTTONTEXT"}, null, null, null, null, null);
+        cursor = MainActivity.db.query("THEME", new String[]{"IMAGEBLACK", "BUTTONBACK", "BUTTONTEXT"}, "ISSELECTED = ?", new String[] {"1"}, null, null, null);
         cursor.moveToFirst();
         setMainImage(cursor.getString(0));
         setButtonsColor(cursor.getString(1));
@@ -51,7 +45,6 @@ public class DayActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         cursor.close();
-        db.close();
     }
 
     public void setMainImage(String path) {
@@ -69,7 +62,7 @@ public class DayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day);
 
-        button = findViewById(R.id.button6);
+        button = findViewById(R.id.button3);
 
         Intent intent = getIntent();
         int currentItem = 0;

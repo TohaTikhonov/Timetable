@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Расписание</string>
     <string name="change_theme">Выбор темы</string>
+    <string name="map_area">Карта райончика</string>
 
 
     <string name="first_pair_called">1. 08:30–10:00</string>
@@ -24,6 +25,9 @@
     <string name="thursday">Четверг</string>
     <string name="friday">Пятница</string>
     <string name="saturday">Суббота</string>
+
+    <string name="today">Сегодня</string>
+    <string name="tomorrow">Завтра</string>
 
     <string name="image_description">background_image</string>
     <string name="image_settings">background_image</string>

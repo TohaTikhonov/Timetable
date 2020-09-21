@@ -1,89 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     android:padding="16dp">
-    <LinearLayout
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wednesday"
+        android:textColor="#E2FCE7"
+        android:textSize="35sp" />
+
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:columnCount="2"
+        android:orientation="horizontal">
+
         <TextView
+            style="@style/CalledStyle"
+            android:text="@string/first_pair_called" />
+
+        <TextView
+            style="@style/ClassStyle"
+            android:layout_width="wrap_content"
+            android:text="" />
+
+        <View
+            android:id="@+id/line_wednesday_1"
+            style="@style/LineStyle" />
+
+        <TextView
+            style="@style/CalledStyle"
+            android:text="@string/second_pair_called" />
+
+        <TextView
+            style="@style/ClassStyle"
+            android:text="" />
+
+        <View
+            android:id="@+id/line_wednesday_2"
+            style="@style/LineStyle" />
+
+        <TextView
+            style="@style/CalledStyle"
+            android:text="@string/third_pair_called" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/wednesday"
-            android:textSize="35sp"
-            android:textColor="#E2FCE7" />
-        <GridLayout
-            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/ClassStyle"
+                android:text="" />
+
+            <View
+                android:id="@+id/line_wednesday_3"
+                style="@style/LineStyleWeek" />
+
+            <TextView
+                style="@style/ClassStyle"
+                android:text="@string/wednesday_3" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/line_wednesday_4"
+            style="@style/LineStyle" />
+
+        <TextView
+            style="@style/CalledStyle"
+            android:text="@string/fourth_pair_called" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:orientation="horizontal">
-            <TextView
-                android:text="@string/first_pair_called"
-                style="@style/CalledStyle" />
-            <TextView
-                style="@style/ClassStyle"
-                android:layout_width="wrap_content"
-                android:text="" />
-            <View style="@style/LineStyle"
-                android:id="@+id/bline_wednesday_1"/>
-            <TextView
-                android:text="@string/second_pair_called"
-                style="@style/CalledStyle"/>
+            android:orientation="vertical">
+
             <TextView
                 style="@style/ClassStyle"
                 android:text="" />
-            <View style="@style/LineStyle"
-                android:id="@+id/bline_wednesday_2"/>
-            <TextView
-                android:text="@string/third_pair_called"
-                style="@style/CalledStyle"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    style="@style/ClassStyle"
-                    android:text="" />
-                <View style="@style/LineStyleWeek"
-                    android:id="@+id/sline_wednesday_1"/>
-                <TextView
-                    style="@style/ClassStyle"
-                    android:text="@string/wednesday_3" />
-            </LinearLayout>
-            <View style="@style/LineStyle"
-                android:id="@+id/bline_wednesday_3"/>
-            <TextView
-                android:text="@string/fourth_pair_called"
-                style="@style/CalledStyle"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    style="@style/ClassStyle"
-                    android:text="" />
-                <View style="@style/LineStyleWeek"
-                    android:id="@+id/sline_wednesday_2"/>
-                <TextView
-                    style="@style/ClassStyle"
-                    android:text="@string/wednesday_4" />
-            </LinearLayout>
-            <View style="@style/LineStyle"
-                android:id="@+id/bline_wednesday_4"/>
-            <TextView
-                android:text="@string/fifth_pair_called"
-                style="@style/CalledStyle"/>
+
+            <View
+                android:id="@+id/line_wednesday_5"
+                style="@style/LineStyleWeek" />
+
             <TextView
                 style="@style/ClassStyle"
-                android:text="@string/wednesday_5" />
-            <View style="@style/LineStyle"
-                android:id="@+id/bline_wednesday_5"/>
-        </GridLayout>
-    </LinearLayout>
-</RelativeLayout>
-</RelativeLayout>
+                android:text="@string/wednesday_4" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/line_wednesday_6"
+            style="@style/LineStyle" />
+
+        <TextView
+            style="@style/CalledStyle"
+            android:text="@string/fifth_pair_called" />
+
+        <TextView
+            style="@style/ClassStyle"
+            android:text="@string/wednesday_5" />
+
+        <View
+            android:id="@+id/line_wednesday_7"
+            style="@style/LineStyle" />
+    </GridLayout>
+</LinearLayout>

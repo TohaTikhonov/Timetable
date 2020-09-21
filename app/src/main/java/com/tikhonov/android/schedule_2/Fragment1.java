@@ -1,16 +1,12 @@
 package com.tikhonov.android.schedule_2;
 
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.fragment.app.Fragment;
-
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -26,31 +22,21 @@ public class Fragment1 extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        SQLiteOpenHelper raspisanieDatabaseHelper = new RaspisanieDatabaseHelper(getContext());
-        SQLiteDatabase db = raspisanieDatabaseHelper.getReadableDatabase();
-        Cursor cursor = db.query("THEME", new String[]{"BUTTONBACK", "BUTTONTEXT", "BIGLINES", "SMALLLINES"}, null, null, null, null, null);
+        Cursor cursor = MainActivity.db.query("THEME", new String[]{"LINES"}, "ISSELECTED = ?", new String[] {"1"}, null, null, null);
         cursor.moveToFirst();
-        setBLines(cursor.getString(2));
-        setSLines(cursor.getString(3));
-        db.close();
+        setLines(cursor.getString(0));
         cursor.close();
     }
 
-    public void setBLines(String path) {
+    public void setLines(String path) {
         ArrayList<View> list = new ArrayList<>();
-        list.add(Objects.requireNonNull(getView()).findViewById(R.id.bline_monday_1));
-        list.add(getView().findViewById(R.id.bline_monday_2));
-        list.add(getView().findViewById(R.id.bline_monday_3));
-        list.add(getView().findViewById(R.id.bline_monday_4));
-        for (View v : list) {
-            v.setBackgroundColor(Color.parseColor(path));
-        }
-    }
+        list.add(Objects.requireNonNull(getView()).findViewById(R.id.line_monday_1));
+        list.add(getView().findViewById(R.id.line_monday_2));
+        list.add(getView().findViewById(R.id.line_monday_3));
+        list.add(getView().findViewById(R.id.line_monday_4));
+        list.add(getView().findViewById(R.id.line_monday_5));
+        list.add(getView().findViewById(R.id.line_monday_6));
 
-    public void setSLines(String path) {
-        ArrayList<View> list = new ArrayList<>();
-        list.add(Objects.requireNonNull(getView()).findViewById(R.id.sline_monday_1));
-        list.add(getView().findViewById(R.id.sline_monday_2));
         for (View v : list) {
             v.setBackgroundColor(Color.parseColor(path));
         }
