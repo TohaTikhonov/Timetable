@@ -56,7 +56,7 @@ public class MainActivity extends Activity {
 
     public void toToday(View view) {
         Calendar calendar = new GregorianCalendar();
-        int numberDay = calendar.get(Calendar.DAY_OF_WEEK);
+        int numberDay = calendar.get(Calendar.DAY_OF_WEEK) - 1;
         if (numberDay == 0) {
             numberDay = 1;
             Toast.makeText(this, "Сегодня воскресенье, поэтому вот тебе понедельник", Toast.LENGTH_SHORT).show();
