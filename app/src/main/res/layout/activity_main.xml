@@ -45,15 +45,4 @@
         android:contentDescription="@string/image_settings"
         android:onClick="toSettings"
         android:src="@drawable/settings" />
-
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="@string/image_settings"
-        android:onClick="toMap"
-        android:src="@drawable/map" />
 </RelativeLayout>

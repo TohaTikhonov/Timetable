@@ -83,11 +83,6 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
-    public void toMap(View view) {
-        Intent intent = new Intent(this, MapActivity.class);
-        startActivity(intent);
-    }
-
     public void setMainImage(String path) {
         int drawableId = this.getResources().getIdentifier(path, "drawable", getPackageName());
         ImageView imageView = (ImageView) findViewById(R.id.image_main);
