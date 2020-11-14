@@ -6,8 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class TimetableDatabaseHelper extends SQLiteOpenHelper {
-    private static final String DB_NAME = "mydb";
-    private static final int DB_VERSION = 1;
+    private static final String DB_NAME = "mydbc";
+    private static final int DB_VERSION = 3;
 
     public TimetableDatabaseHelper(Context context){
         super(context, DB_NAME, null, DB_VERSION);
@@ -15,43 +15,53 @@ public class TimetableDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE THEME (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "IMAGE TEXT, "
-                + "BUTTONBACK TEXT, "
-                + "BUTTONTEXT TEXT, "
-                + "IMAGEBLACK TEXT, "
-                + "LINES TEXT, "
-                + "SCREEN TEXT, "
-                + "SELECTEDSCREEN TEXT, "
-                + "ISSELECTED TEXT);");
+        sqLiteDatabase.execSQL("CREATE TABLE DAY (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "NAME TEXT, "
+                + "ON1 TEXT, "
+                + "UNDER1 TEXT, "
+                + "ON2 TEXT, "
+                + "UNDER2 TEXT, "
+                + "ON3 TEXT, "
+                + "UNDER3 TEXT, "
+                + "ON4 TEXT, "
+                + "UNDER4 TEXT, "
+                + "ON5 TEXT, "
+                + "UNDER5 TEXT, "
+                + "ON6 TEXT, "
+                + "UNDER6 TEXT, "
+                + "ON7 TEXT, "
+                + "UNDER7 TEXT);");
 
-        putTheme(sqLiteDatabase, "alina", "rounded_alina", "#ffffff", "alina_black",
-                "#C88548", "alina_theme", "alina_selected", "0");
-        putTheme(sqLiteDatabase, "loli", "rounded_loli", "#FDDDD2", "loli_black",
-                "#E69BA2", "loli_theme", "loli_selected", "0");
-        putTheme(sqLiteDatabase, "electricity", "rounded_electricity", "#000000", "electricity_black",
-                "#EBD8EC", "electricity_theme", "electricity_selected", "1");
-        putTheme(sqLiteDatabase, "iamgay", "rounded_iamgay", "#C4E5EC", "iamgay_black",
-                "#5E7984", "iamgay_theme", "iamgay_selected", "0");
-        putTheme(sqLiteDatabase, "pornhub", "rounded_pornhub", "#000000", "pornhub_black",
-                "#f7971c", "pornhub_theme", "pornhub_selected", "0");
-        putTheme(sqLiteDatabase, "satanism", "rounded_satanism", "#BAB8AA", "satanism_black",
-                "#5D0C10", "satanism_theme", "satanism_selected", "0");
+        putDay(sqLiteDatabase, "Понедельник", "", "", "","", "","", "", "", "", "", "", "","", "");
+        putDay(sqLiteDatabase, "Вторник", "", "", "","", "","", "", "", "", "", "", "","", "");
+        putDay(sqLiteDatabase, "Среда", "", "", "","", " ","", " ", "", "", "", "", "","", "");
+        putDay(sqLiteDatabase, "Четверг", "", "", "","", "","", "", "", "", "","", "", "", "");
+        putDay(sqLiteDatabase, "Пятница", "", "", "","", "","", "", "", "", "", "", "","", "");
+        putDay(sqLiteDatabase, "Суббота", "", "", "","", "","", "", "", "", "", "", "","", "");
     }
 
-    public void putTheme(SQLiteDatabase sqLiteDatabase, String image, String buttonBack, String buttonText,
-                         String imageBlack, String lines, String screen, String selectedScreen, String selected) {
+    public void putDay(SQLiteDatabase sqLiteDatabase, String name, String on1, String under1,
+                         String on2, String under2, String on3, String under3, String on4, String under4,
+                       String on5, String under5, String on6, String under6, String on7, String under7) {
 
         ContentValues values = new ContentValues();
-        values.put("IMAGE", image);
-        values.put("BUTTONBACK", buttonBack);
-        values.put("BUTTONTEXT", buttonText);
-        values.put("IMAGEBLACK", imageBlack);
-        values.put("LINES", lines);
-        values.put("SCREEN", screen);
-        values.put("SELECTEDSCREEN", selectedScreen);
-        values.put("ISSELECTED", selected);
-        sqLiteDatabase.insert("THEME", null, values);
+        values.put("NAME", name);
+        values.put("ON1", on1);
+        values.put("UNDER1", under1);
+        values.put("ON2", on2);
+        values.put("UNDER2", under2);
+        values.put("ON3", on3);
+        values.put("UNDER3", under3);
+        values.put("ON4", on4);
+        values.put("UNDER4", under4);
+        values.put("ON5", on5);
+        values.put("UNDER5", under5);
+        values.put("ON6", on6);
+        values.put("UNDER6", under6);
+        values.put("ON7", on7);
+        values.put("UNDER7", under7);
+
+        sqLiteDatabase.insert("DAY", null, values);
     }
 
     @Override

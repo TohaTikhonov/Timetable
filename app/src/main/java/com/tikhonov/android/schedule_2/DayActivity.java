@@ -2,55 +2,26 @@ package com.tikhonov.android.schedule_2;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
+
 import java.util.Objects;
 
 public class DayActivity extends AppCompatActivity {
-    private Cursor cursor;
-    Button button;
+    public static final String DAY_NAME = "dayName";
+    private ImageView imageView;
 
     @Override
     public void onResume() {
         super.onResume();
-        cursor = MainActivity.db.query("THEME", new String[]{"IMAGEBLACK", "BUTTONBACK", "BUTTONTEXT"}, "ISSELECTED = ?", new String[] {"1"}, null, null, null);
-        cursor.moveToFirst();
-        setMainImage(cursor.getString(0));
-        setButtonsColor(cursor.getString(1));
-        setButtonsText(cursor.getString(2));
-    }
-
-    public void setButtonsColor(String path) {
-        int drawableId = this.getResources().getIdentifier(path, "drawable", getPackageName());
-        Drawable shapeDrawable = ContextCompat.getDrawable(getApplicationContext(), drawableId);
-        button.setBackground(shapeDrawable);
-    }
-
-    public void setButtonsText(String path) {
-        button.setTextColor(Color.parseColor(path));
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        cursor.close();
-    }
-
-    public void setMainImage(String path) {
-        int drawableId = this.getResources().getIdentifier(path, "drawable", getPackageName());
-        ImageView imageView = (ImageView) findViewById(R.id.image_day);
-        imageView.setImageResource(drawableId);
+        ThemeSetter.setImage(this, getPackageName(), MainActivity.sharedPreferences.getString(MainActivity.IMAGE_BACKGROUND, "alina"), imageView);
     }
 
     public void back(View view) {
@@ -62,11 +33,11 @@ public class DayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day);
 
-        button = findViewById(R.id.button3);
+        imageView = (ImageView) findViewById(R.id.image_day);
 
         Intent intent = getIntent();
         int currentItem = 0;
-        String day = Objects.requireNonNull(intent.getExtras()).getString("nameDay");
+        String day = Objects.requireNonNull(intent.getExtras()).getString(DAY_NAME);
         assert day != null;
         switch (day) {
             case "1":
@@ -110,20 +81,18 @@ public class DayActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             position = position % 6;
             switch (position) {
-                case 0:
-                    return new Fragment1();
                 case 1:
-                    return new Fragment2();
+                    return new DayFragment("Вторник");
                 case 2:
-                    return new Fragment3();
+                    return new DayFragment("Среда");
                 case 3:
-                    return new Fragment4();
+                    return new DayFragment("Четверг");
                 case 4:
-                    return new Fragment5();
+                    return new DayFragment("Пятница");
                 case 5:
-                    return new Fragment6();
+                    return new DayFragment("Суббота");
                 default:
-                    return new Fragment1();
+                    return new DayFragment("Понедельник");
             }
         }
     }
